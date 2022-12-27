@@ -1,12 +1,12 @@
 /* Importacion de los modulos requeridos*/
 
 const express = require('express');
-const controladorFlorescencia = require('./api/florescencia/controller.js');
+const controladorProductos= require('./api/productos/controller.js');
 const controladorUsuarios = require('./api/usuarios/controller');
 const  bodyParser  = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
-const conexion  = require ('./database/connection');
+const conexion  = require ('./database/conection');
 const cors = require('cors');
 const helmet = require('helmet');
 const compression = require('compression');
@@ -15,7 +15,7 @@ require('dotenv').config();
 /*iniciar configuracion*/
 
 const app = express();
-const port = process.env.API_PORT;
+const port = process.env.PORT;
 app.use(cors());
 app.use(helmet());
 app.use(compression());
@@ -30,7 +30,7 @@ app.use("/api/usuarios", controladorUsuarios);
 
 
 /* Configurar la carpreta publica*/
-//FlorescenciaApi/public = _dirname
+//productis/public = _dirname
 const publicPath = path.resolve(__dirname, 'public');
 app.use(express.static(publicPath));
 
